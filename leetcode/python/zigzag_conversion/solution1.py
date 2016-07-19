@@ -27,6 +27,3 @@ class Solution:
 
 s = Solution()    
 print s.convert("PAYPALISHIRING", 3)
-
-s = Solution()    
-print s.convert("PAYPALISHIRING", 3)
