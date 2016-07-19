@@ -7,29 +7,26 @@ string and make this conversion given a number of rows:
 string convert(string text, int nRows); 
 convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 '''
-class Solution(object):
-    def convert(self, s, numRows):
-        """
-        :type s: str
-        :type numRows: int
-        :rtype: str
-        """
-        if len(s) < numRows: return s
-        length = len(s)
-        step = 2 * numRows -2
-        count = 0
-        chars = []
-        for i in xrange(numRows):
-            interval = step - 2*i
-            j = i
-            while j < length:
-                chars.append(s[j])
-                count += 1
-                if (interval < step and interval > 0 and j + interval<length and count<length):
-                    chars.append(s[j+interval])
-                    count += 1
-                j+=step
-        return ''.join(str(x) for x in chars)
+class Solution:
+    # @return a string
+    def convert(self, s, nRows):
+        lists = []
+        lens = len(s)
+        grp = (2 * nRows - 2) if nRows >= 3 else nRows
+        
+        for iR in range(nRows):
+            sindex = iR
+            while sindex < lens:
+                lists.append(s[sindex])
+                if iR > 0 and iR < (nRows - 1):
+                    sindex2 = (sindex + grp - 2 * iR)
+                    if sindex2  < lens:
+                        lists.append(s[sindex2])
+                sindex += grp
+        return ''.join(lists)
+
+s = Solution()    
+print s.convert("PAYPALISHIRING", 3)
 
 s = Solution()    
 print s.convert("PAYPALISHIRING", 3)
