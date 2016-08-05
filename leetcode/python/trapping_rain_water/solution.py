@@ -32,11 +32,12 @@ class Solution(object):
         
         ans = 0
         for i in range(len(pos) - 1):
+            # between the two adjacent index in pos[], all the height are lower than the left wall
             for j in range(pos[i] + 1, pos[i+1]):
                 ans += height[pos[i]] - height[j]
         
         for i in range(len(neg) - 1):
-            for j in range(neg[i] - 1, neg[i+1], -1):
+            for j in range(neg[i] - 1, neg[i+1], -1): # minus one!
                 ans += height[neg[i]] - height[j]
         
         return ans

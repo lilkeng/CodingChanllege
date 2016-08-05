@@ -14,6 +14,7 @@ class Solution(object):
         """
         n = len(matrix)
         for i in range(n):
+            #j start from i+1, bc [i][i] won't change, axis of symmetry.
             for j in range(i+1, n):
                 matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
         for i in range(n):

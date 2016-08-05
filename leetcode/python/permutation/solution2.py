@@ -9,6 +9,8 @@ class Solution(object):
         else:
             res = []
             for i, e in enumerate(nums):
+                # nums = [1,2,3]
+                #(0,1), (0,2), (0,3)
                 rest = nums[:i] + nums[i + 1:]
                 rest_perms = self.permute(rest)
                 for perm in rest_perms:
